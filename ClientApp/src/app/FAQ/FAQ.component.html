@@ -1,0 +1,144 @@
+<div class="col-sm-4 col-sm-offset-2" *ngIf="visSkjema">
+  <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
+    <input class="form-control" formControlName="id" type="hidden" />
+    <div class="form-group">
+      <label>Spørsmål</label>
+      <input class="form-control" formControlName="sporsmal" />
+      <p class="alert alert-warning" [hidden]="skjema.controls.sporsmal.valid || (skjema.controls.sporsmal.pristine && !submitted)">
+        Spørsmål er obligatorisk.
+      </p>
+    </div>
+    <div class="form-group">
+      <label>Svar</label>
+      <input class="form-control" formControlName="svar" />
+      <p class="alert alert-warning" [hidden]="skjema.controls.svar.valid || (skjema.controls.svar.pristine && !submitted)">
+        Svar er obligatorisk.
+      </p>
+    </div>
+    <div class="form-group">
+      <label>Rating opp</label>
+      <input class="form-control" formControlName="ratingOpp" />
+      <p class="alert alert-warning" [hidden]="skjema.controls.ratingOpp.valid || (skjema.controls.ratingOpp.pristine && !submitted)">
+        Rating er obligatorisk.
+      </p>
+    </div>
+    <div class="form-group">
+      <label>Rating ned</label>
+      <input class="form-control" formControlName="ratingNed" />
+      <p class="alert alert-warning" [hidden]="skjema.controls.ratingNed.valid || (skjema.controls.ratingNed.pristine && !submitted)">
+        Rating er obligatorisk
+      </p>
+    </div>
+    <div class="form-group">
+      <button type="submit" *ngIf="skjemaStatus=='Registrere'" [disabled]="!skjema.valid" class="btn btn-primary">Registrer</button>
+      <button class="btn btn-default" (click)="tilbakeTilListe()">Tilbake</button>
+    </div>
+  </form>
+</div>
+
+<div>
+  <div class="col-md-6 col-md-offset-1" *ngIf="visQuestionListe">
+    <div *ngIf="laster">Laster spørsmål.....</div>
+    <button class='btn btn-primary' (click)='registrerQuestion()'>Registrer spørsmål</button>
+    <h1>FAQ</h1>
+
+    <table class="table table-bordered table-condensed">
+      <thead>
+        <tr>
+          <th>Spørsmål</th>
+          <th>Svar</th>
+          <th>Rating opp</th>
+          <th>Rating ned</th>
+
+        </tr>
+      </thead>
+      <tbody *ngFor="let question of alleQuestions">
+        <tr>
+          <td>{{question.sporsmal}}</td>
+          <td>{{question.svar}}</td>
+          <td>{{question.ratingOpp}}</td>
+          <td>{{question.ratingNed}}</td>
+          <td><button class="btn btn-success" (click)="endreRating(question.id, question.sporsmal, question.svar, question.ratingOpp, question.ratingNed, 0)">Like</button></td>
+          <td><button class="btn btn-success" (click)="endreRating(question.id, question.sporsmal, question.svar, question.ratingOpp, question.ratingNed, 1)">Disike</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+    <!--
+        <mat-tree-node></mat-tree-node>
+        <mat-tree-node></mat-tree-node>
+        <mat-tree-node>{{question.sporsmal}}</mat-tree-node>
+        <mat-tree-node>{{question.svar}}</mat-tree-node>
+      </mat-tree>
+    -->
+  </div>
+</div>
+
+<!--
+<mat-tree [dataSource]="nestedDataSource" [treeControl]="nestedTreeControl" class="example-tree">
+  <mat-tree-node *matTreeNodeDef="let node">
+    <li class="mat-tree-node">
+      <button mat-icon-button disabled></button>
+      {{question.sporsmal}}
+    </li>
+  </mat-tree-node>
+  <mat-nested-tree-node *matTreeNodeDef="let node; when: hasNestedChild">
+    <li>
+      <div class="mat-tree-node">
+        <button mat-icon-button matTreeNodeToggle>
+          <mat-icon class="">
+            {{nestedTreeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+          </mat-icon>
+        </button>
+        {{question.svar}}
+      </div>
+      <ul [class.example-tree-invisible]="!nestedTreeControl.isExpanded(node)">
+        <ng-container matTreeNodeOutlet></ng-container>
+      </ul>
+    </li>
+  </mat-nested-tree-node>
+</mat-tree>
+-->
+
+<div>
+  <div class="col-md-6 col-md-offset-1" *ngIf="visQuestionListe" >
+
+    <ngb-accordion [closeOthers]="true" activeIds="static-1" *ngFor="let question of alleQuestions">
+      <ngb-panel id="static-1" title="{{question.sporsmal}}">
+        <ng-template ngbPanelContent>
+          {{question.svar}}<br /><br />
+          {{question.ratingOpp}} <button class="btn btn-success" (click)="endreRating(question.id, question.sporsmal, question.svar, question.ratingOpp, question.ratingNed, 0)">Like</button>
+          {{question.ratingNed}} <button class="btn btn-danger" (click)="endreRating(question.id, question.sporsmal, question.svar, question.ratingOpp, question.ratingNed, 1)">Disike</button>
+        </ng-template>
+      </ngb-panel>
+      <!--
+        <ngb-panel id="static-2">
+          <ng-template ngbPanelTitle>
+            <span>&#9733; <b>Fancy</b> title &#9733;</span>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+            aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+            sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+            craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+            occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+            labore sustainable VHS.
+          </ng-template>
+        </ngb-panel>
+        <ngb-panel id="static-3" title="Disabled" [disabled]="true">
+          <ng-template ngbPanelContent>
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+            aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+            sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+            craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+            occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+            labore sustainable VHS.
+          </ng-template>
+        </ngb-panel>
+       -->
+    </ngb-accordion>
+
+  </div>
+</div>
