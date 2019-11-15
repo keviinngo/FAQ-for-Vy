@@ -3,10 +3,13 @@ import { Kunde } from './kunde';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css']
 })
+
+
 export class HomeComponent {
-    
+    /*
     public navn: string;
     public sporsmal: string;
 
@@ -23,4 +26,5 @@ export class HomeComponent {
         var indeks = this.kunder.indexOf(kunde);
         this.kunder.splice(indeks, 1);
     }
+    */
 }

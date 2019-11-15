@@ -1,9 +1,9 @@
 <header>
   <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
+    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3"
   >
     <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']" ><img src="assets/bilde/vy-logo.png" class="vy-logo"></a>
+      <a class="navbar-brand" [routerLink]="['/']" ><img src="assets/bilde/vy-logo-v2.png" class="vy-logo"></a>
       <button
         class="navbar-toggler"
         type="button"
@@ -23,14 +23,14 @@
           <li class="nav-item"
               [routerLinkActive]="['link-active']"
               [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+            <a class="btn btn-primary text-white" [routerLink]="['/']">Home</a>
           </li>
-
+          
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/FAQ']">FAQ</a>
+            <a class="btn btn-primary text-white" [routerLink]="['/FAQ']">FAQ</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/bruker']">Bruker</a>
+            <a class="btn btn-primary text-white" [routerLink]="['/bruker']">Kontakt oss</a>
           </li>
           <!--
     <li class="nav-item" [routerLinkActive]="['link-active']">
