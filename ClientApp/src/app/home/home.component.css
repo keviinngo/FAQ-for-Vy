@@ -7,10 +7,13 @@ header.masthead {
   padding-bottom: 8rem;
   background-image: url(/assets/bilde/norway-landscape.jpg);
   background-repeat: no-repeat;
-   
+  overflow: hidden;
+  background-attachment: fixed;
+  background-position: center;
+  display: block;
 }
 
-  header.masthead .overlay {
+header.masthead .overlay {
     position: absolute;
     background-color: #212529;
     height: 100%;
@@ -18,7 +21,7 @@ header.masthead {
     top: 0;
     left: 0;
     opacity: 0.7;
-  }
+}
 
 
 body {
