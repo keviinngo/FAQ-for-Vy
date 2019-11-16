@@ -7,14 +7,16 @@ import { Bruker, IBruker } from "./bruker";
 
 @Component({
     selector: "app-bruker",
-    templateUrl: "./bruker.component.html"
+    templateUrl: "./bruker.component.html",
+    styleUrls: ['./bruker.component.css'],
 })
+
+
 export class BrukerComponent {
     alleBrukere: Array<Bruker>;
     laster: boolean;
     skjema: FormGroup;
     skjemaStatus: string;
-    visSkjema: boolean;
     visBrukerListe: boolean;
 
     constructor(private _http: HttpClient, private fb: FormBuilder) {
@@ -24,15 +26,15 @@ export class BrukerComponent {
             fornavn: [null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])],
             etternavn: [null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])],
             adresse: [null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])],
-            brukersporsmal: [null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])],
+            brukersporsmal: [null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,150}")])],
         });
 
     }
 
     ngOnInit() {
         this.laster = true;
+        this.skjemaStatus = "Registrere";
         this.hentAlleBrukere();
-        this.visSkjema = false;
         this.visBrukerListe = true;
     }
 
@@ -49,12 +51,9 @@ export class BrukerComponent {
     };
 
     vedSubmit() {
-        if (this.skjemaStatus == "Registrere") {
-            this.lagreBruker();
-        }
-        else {
-            alert("Feil i applikasjonen!");
-        }
+        
+        this.lagreBruker();
+        this.registrerBruker();
     }
 
     registrerBruker() {
@@ -68,15 +67,8 @@ export class BrukerComponent {
             brukersporsmal: ""
 
         });
-        this.skjema.markAsPristine(); // sett skjemaet til "uberørt" slik at det ikke kommer validerings-feilmeldinger
-        this.visBrukerListe = false;
+        this.skjema.markAsPristine(); // sett skjemaet til "uberørt" slik at det ikke kommer validerings-feilmeldinger       
         this.skjemaStatus = "Registrere";
-        this.visSkjema = true;
-    }
-
-    tilbakeTilListe() {
-        this.visBrukerListe = true;
-        this.visSkjema = false;
     }
 
     lagreBruker() {
@@ -94,8 +86,7 @@ export class BrukerComponent {
         this._http.post("api/FAQ/Bruker", body, { headers: headers })
             .subscribe(
                 retur => {
-                    this.hentAlleBrukere();
-                    this.visSkjema = false;
+                    this.hentAlleBrukere();                    
                     this.visBrukerListe = true;
                     console.log("ferdig post-api/FAQ/Bruker");
                 },

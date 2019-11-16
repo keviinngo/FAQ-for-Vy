@@ -1,4 +1,4 @@
-<div class="col-sm-4 col-sm-offset-2" *ngIf="visSkjema">
+<div class="col-sm-4 col-sm-offset-2" >
   <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
     <input class="form-control" formControlName="id" type="hidden" />
     <div class="form-group">
@@ -31,14 +31,14 @@
     </div>
     <div class="form-group">
       <label>Spørsmål</label>
-      <input class="form-control" formControlName="brukersporsmal" />
+      <textarea class="form-control" rows="3" formControlName="brukersporsmal"></textarea>
       <p class="alert alert-warning" [hidden]="skjema.controls.brukersporsmal.valid || (skjema.controls.brukersporsmal.pristine && !submitted)">
         Spørsmål er obligatorisk
       </p>
     </div>
     <div class="form-group">
       <button type="submit" *ngIf="skjemaStatus=='Registrere'" [disabled]="!skjema.valid" class="btn btn-primary">Registrer</button>
-      <button class="btn btn-default" (click)="tilbakeTilListe()">Tilbake</button>
+      
     </div>
   </form>
 </div>
@@ -46,7 +46,7 @@
 <div>
   <div class="col-md-6 col-md-offset-1" *ngIf="visBrukerListe">
     <div *ngIf="laster">Laster spørsmål.....</div>
-    <button class='btn btn-primary' (click)='registrerBruker()'>Registrer bruker</button>
+    
     <h1>Bruker spørsmål</h1>
 
     <table class="table table-bordered table-condensed">
@@ -71,5 +71,20 @@
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+
+<div *ngIf="visBrukerListe">
+  <div class="card"  *ngFor="let bruker of alleBrukere">
+    <div class="card-header">
+      {{bruker.email}}
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>{{bruker.brukersporsmal}}</p>
+        <footer class="blockquote-footer">{{bruker.fornavn}} {{bruker.etternavn}}</footer>
+      </blockquote><br />
+      <button class="btn btn-danger" (click)="sletteBruker(bruker.id)">Slett</button>
+    </div>
   </div>
 </div>
