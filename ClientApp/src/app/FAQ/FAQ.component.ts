@@ -25,6 +25,7 @@ export class NgbdAccordionConfig {
 }
 */
 
+
 export class FAQComponent {
     alleQuestions: Array<Question>;
     laster: boolean;
@@ -34,7 +35,8 @@ export class FAQComponent {
     visQuestionListe: boolean;
     public currentCount = 0;
 
-
+    clickedLike = false;
+    clickedDislike = false;
 
     //nestedDataSource: MatTreeNestedDataSource<Question>;
     //nestedTreeControl: NestedTreeControl<Question>;
@@ -141,10 +143,12 @@ export class FAQComponent {
             case 0:
                 ratingOpp++;
                 this.endreEnRating(id, sporsmal, svar, ratingOpp, ratingNed);
+                console.log("Like was called!");
                 break;
             case 1:
                 ratingNed--;
                 this.endreEnRating(id, sporsmal, svar, ratingOpp, ratingNed);
+                console.log("Dislike was called!");
                 break;
         }
     }

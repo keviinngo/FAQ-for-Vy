@@ -1,4 +1,4 @@
-<div class="col-sm-4 col-sm-offset-2" >
+<div class="col-sm-4 col-sm-offset-2 boks">
   <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
     <input class="form-control" formControlName="id" type="hidden" />
     <div class="form-group">
@@ -38,53 +38,60 @@
     </div>
     <div class="form-group">
       <button type="submit" *ngIf="skjemaStatus=='Registrere'" [disabled]="!skjema.valid" class="btn btn-primary">Registrer</button>
-      
+
     </div>
   </form>
 </div>
 
-<div>
-  <div class="col-md-6 col-md-offset-1" *ngIf="visBrukerListe">
-    <div *ngIf="laster">Laster spørsmål.....</div>
-    
-    <h1>Bruker spørsmål</h1>
 
-    <table class="table table-bordered table-condensed">
-      <thead>
-        <tr>
-          <th>Email</th>
-          <th>Fornavn</th>
-          <th>Etternavn</th>
-          <th>Adresse</th>
-          <th>Spørsmål</th>
+<div *ngIf="laster">Laster spørsmål.....</div>
 
-        </tr>
-      </thead>
-      <tbody *ngFor="let bruker of alleBrukere">
-        <tr>
-          <td>{{bruker.email}}</td>
-          <td>{{bruker.fornavn}}</td>
-          <td>{{bruker.etternavn}}</td>
-          <td>{{bruker.adresse}}</td>
-          <td>{{bruker.brukersporsmal}}</td>
-          <td><button class="btn btn-danger" (click)="sletteBruker(bruker.id)">Slett</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
 
 <div *ngIf="visBrukerListe">
-  <div class="card"  *ngFor="let bruker of alleBrukere">
-    <div class="card-header">
+  <div class="card" *ngFor="let bruker of alleBrukere">
+    <div class="card-header border-success mb-3">
       {{bruker.email}}
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
         <p>{{bruker.brukersporsmal}}</p>
-        <footer class="blockquote-footer">{{bruker.fornavn}} {{bruker.etternavn}}</footer>
-      </blockquote><br />
-      <button class="btn btn-danger" (click)="sletteBruker(bruker.id)">Slett</button>
+        <footer class="blockquote-footer">{{bruker.fornavn}} {{bruker.etternavn}}<button class="btn btn-danger" (click)="sletteBruker(bruker.id)" style="float: right">Slett</button></footer>
+      </blockquote>
     </div>
   </div>
 </div>
+
+<!--
+<div>
+  <div class="col-md-6 col-md-offset-1" *ngIf="visBrukerListe">
+
+
+      <h1>Bruker spørsmål</h1>
+
+      <table class="table table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Fornavn</th>
+            <th>Etternavn</th>
+            <th>Adresse</th>
+            <th>Spørsmål</th>
+
+          </tr>
+        </thead>
+        <tbody *ngFor="let bruker of alleBrukere">
+          <tr>
+            <td>{{bruker.email}}</td>
+            <td>{{bruker.fornavn}}</td>
+            <td>{{bruker.etternavn}}</td>
+            <td>{{bruker.adresse}}</td>
+            <td>{{bruker.brukersporsmal}}</td>
+            <td><button class="btn btn-danger" (click)="sletteBruker(bruker.id)">Slett</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  -->

@@ -3,14 +3,64 @@
 
 
 
-<ngb-accordion [closeOthers]="true" id="static-1">
-  <ngb-panel id="static-{{question.id}}" title="{{question.sporsmal}}" *ngFor="let question of alleQuestions">
-      <ng-template ngbPanelContent>
-          {{question.svar}}<br /><br />
-          {{question.ratingOpp}} <button class="btn btn-success" (click)="endreRating(question.id, question.sporsmal, question.svar, question.ratingOpp, question.ratingNed, 0)">Like</button>
-          {{question.ratingNed}} <button class="btn btn-danger" (click)="endreRating(question.id, question.sporsmal, question.svar, question.ratingOpp, question.ratingNed, 1)">Disike</button>
-       </ng-template>
-   </ngb-panel>
+<ngb-accordion [closeOthers]="true" id="static-1" width-50>
+  <ngb-panel id="static-{{question.id}}"  *ngFor="let question of alleQuestions">
+    <ng-template ngbPanelHeader>
+      <div class="card title">
+         <span class="steps">
+            <button ngbPanelToggle class="btn w-100 text-center">{{question.sporsmal}}</button>
+          </span>
+      </div>
+    </ng-template>
+    <ng-template ngbPanelContent>
+
+      {{question.svar}}<br /><br />
+      <span class="liker">
+        {{question.ratingOpp}} <button class="btn btn-success" [disabled]="clickedLike" (click)="endreRating(question.id, question.sporsmal, question.svar, question.ratingOpp, question.ratingNed, 0); clickedLike = true;">Like</button>
+      </span>
+      <span class="disliker">
+        {{question.ratingNed}} <button class="btn btn-danger" [disabled]="clickedDislike" (click)="endreRating(question.id, question.sporsmal, question.svar, question.ratingOpp, question.ratingNed, 1); clickedDislike = true;">Dislike</button>
+      </span>
+    </ng-template>
+  </ngb-panel>
 </ngb-accordion>
 
 
+<div class="container">
+
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="accordion">
+    <div class="accordion-item">
+      <a>Why is the moon sometimes out during the day?</a>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <a>Why is the sky blue?</a>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <a>Will we ever discover aliens?</a>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <a>How much does the Earth weigh?</a>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <a>How do airplanes stay up?</a>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,3 +1,4 @@
+/*
 .card-header {
   width: auto;
   position: center;
@@ -8,9 +9,17 @@
   width: 50%;
   position: center;
 }
+*/
 
-.card{
-  
+.card {
   width: 50%;
   position: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.boks {
+  float: left;
 }
