@@ -6,5 +6,5 @@ Norsk landskap: https://www.capturelandscapes.com/landscape-photography-in-arcti
 FAQ ikon: https://icons8.com/icon/set/question/windows
 Kontakt ikon: https://icons8.com/icon/set/contact/windows
 
-FAQ spørsmålene og svar er hentet fra:
+FAQ spørsmålene og svar er inspirert hentet fra:
 https://www.vy.no/kundeservice/sporsmal-og-svar
