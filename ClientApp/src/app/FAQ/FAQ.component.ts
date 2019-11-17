@@ -7,7 +7,7 @@ import { Question, IQuestion } from "./question";
 //import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
 //import { MatTreeNestedDataSource } from '@angular/material/tree';
 //import { NestedTreeControl } from '@angular/cdk/tree';
-import { MatExpansionModule } from '@angular/material/expansion';
+//import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
     selector: "app-FAQ",
