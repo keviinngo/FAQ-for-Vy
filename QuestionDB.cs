@@ -98,6 +98,36 @@ namespace IndividuellAngular
             q5.ratingOpp = 0;
             q5.ratingNed = 0;
 
+            var q6 = new Question();
+            q6.sporsmal = "Jeg har slettet appen og billetten(e) er borte. Hva gjør jeg?";
+            q6.svar = "Da må du kontakte kundeservice eller en betjent stasjon slik at vi kan tilbakestille billetten din. Har du periodebillett kan du overføre denne selv ved å laste ned en erstatningsbillett etter å ha installert appen på nytt. Enkeltbilletter kan du også laste ned på nytt frem til dagen før avreise.";
+            q6.ratingOpp = 0;
+            q6.ratingNed = 0;
+
+            var q7 = new Question();
+            q7.sporsmal = "Hva skjer hvis jeg ikke rekker toget?";
+            q7.svar = "Enkeltbilletter er gyldig til angitt avgang, det vil si at du ikke kan benytte billetten på andre avganger. Du må dermed kjøpe en ny billett hvis du vil reise med neste avgang.";
+            q7.ratingOpp = 0;
+            q7.ratingNed = 0;
+
+            var q8 = new Question();
+            q8.sporsmal = "Har dere dyrefri sone for meg som er allergisk?";
+            q8.svar = "Togene våre har en dyrefri sone der det ikke er tillatt å ha med seg dyr. På tog med setereservasjon kan du reservere plass i dyrefri sone, mens på tog uten plassreservering finner du vogn merket med dyrefri-symbolet.";
+            q8.ratingOpp = 0;
+            q8.ratingNed = 0;
+
+            var q9 = new Question();
+            q9.sporsmal = "Hvordan er samarbeidet mellom Vy og Ruter?";
+            q9.svar = "Har du en gyldig billett som gjelder i én eller flere soner i Oslo og Akershus, kan du forlenge reisen med en Ruter tilleggsbillett. Tilleggsbilletten må kjøpes rett før en reise, og er ikke tilgjengelig for salg om bord i togene. Tilleggsbilletten kjøper du i Vy-appen hvis du har en gyldig billett, eller på billettautomaten dersom du har reisekort. Tilleggsbilletten er kun gyldig for den reisen den er kjøpt til, og kan ikke benyttes ved senere reiser.";
+            q9.ratingOpp = 0;
+            q9.ratingNed = 0;
+
+            var q10 = new Question();
+            q10.sporsmal = "Jeg har en periodebillett fra Vy. Kan jeg bruke den på alle tog og busser?";
+            q10.svar = "Nei, togbilletter fra Vy kan ikke brukes på Vy-busser og bussbilletter fra Vy kan ikke brukes på Vy-tog. Det er foreløpig ikke samarbeid om billetter mellom tog og buss i Vy.";
+            q10.ratingOpp = 0;
+            q10.ratingNed = 0;
+
             try
             {
                 context.Add(q1);
@@ -105,6 +135,11 @@ namespace IndividuellAngular
                 context.Add(q3);
                 context.Add(q4);
                 context.Add(q5);
+                context.Add(q6);
+                context.Add(q7);
+                context.Add(q8);
+                context.Add(q9);
+                context.Add(q10);
                 context.SaveChanges();          
             }
 
