@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 //import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import { DemoMaterialModule } from './material-module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 import { AppComponent } from './app.component';
@@ -44,6 +44,8 @@ import { BrukerComponent } from './bruker/bruker.component';
       //MatIconModule,
       //MatButtonModule,
       NgbModule,
+      //NgbActiveModal,
+      //NgbModal,
         //DemoMaterialModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },

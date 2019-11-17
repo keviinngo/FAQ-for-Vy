@@ -1,3 +1,4 @@
+<!--
 <div class="col-sm-4 col-sm-offset-2 boks">
   <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
     <input class="form-control" formControlName="id" type="hidden" />
@@ -43,25 +44,96 @@
   </form>
 </div>
 
+<button class="btn btn-outline-primary mr-2" (click)="open()">
+  <div>Open confirm modal</div>
+</button>
+-->
 
-<div *ngIf="laster">Laster spørsmål.....</div>
+<div *ngIf="laster">Laster inn siden.....</div>
+<h2 class="text-center">Spørsmål fra kunder</h2>
+<h4 class="text-center text-muted">Her ser du foreløpige spørsmål sendt inn. <b>Vy</b> behandler dem snart!</h4>
+
 
 
 <div *ngIf="visBrukerListe">
   <div class="card" *ngFor="let bruker of alleBrukere">
     <div class="card-header border-success mb-3">
-      {{bruker.email}}
+      {{bruker.email}}<img src="assets/bilde/vy-logo.png" class="vy-logo">
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
         <p>{{bruker.brukersporsmal}}</p>
-        <footer class="blockquote-footer">{{bruker.fornavn}} {{bruker.etternavn}}<button class="btn btn-danger" (click)="sletteBruker(bruker.id)" style="float: right">Slett</button></footer>
+        <footer class="blockquote-footer">{{bruker.fornavn}} {{bruker.etternavn}} fra {{bruker.adresse}}<button class="btn btn-dark" (click)="sletteBruker(bruker.id)" style="float: right">Slett</button></footer>
       </blockquote>
     </div>
   </div>
 </div>
 
+<!-- Contact -->
+<section class="page-section" id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <br />
+        <h2 class="section-heading text-uppercase">Kontakt oss</h2>
+        <h3 class="section-subheading text-muted">Send inn gjerne ditt spørsmål!</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <form id="contactForm" name="sentMessage" novalidate="novalidate" [formGroup]="skjema" (ngSubmit)="vedSubmit()">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input class="form-control" formControlName="email" type="text" placeholder="- Skriv inn din epost -">
+                <p class="alert alert-warning" [hidden]="skjema.controls.email.valid || (skjema.controls.email.pristine && !submitted)">
+                  Eposten du har skrevet er ikke akseptert.
+                </p>
+              </div>
+              <div class="form-group">
+                <input class="form-control" formControlName="fornavn" type="email" placeholder="- Skriv inn ditt fornavn -">
+                <p class="alert alert-warning" [hidden]="skjema.controls.fornavn.valid || (skjema.controls.fornavn.pristine && !submitted)">
+                  Fornavnet du har skrevet er ikke akseptert.
+                </p>
+              </div>
+              <div class="form-group">
+                <input class="form-control" formControlName="etternavn" type="text" placeholder="- Skriv inn ditt etternavn -">
+                <p class="alert alert-warning" [hidden]="skjema.controls.etternavn.valid || (skjema.controls.etternavn.pristine && !submitted)">
+                  Etternavnet du har skrevet er ikke akseptert.
+                </p>
+              </div>
+              <div class="form-group">
+                <input class="form-control" formControlName="adresse" type="text" placeholder="- Skriv inn din adresse -">
+                <p class="alert alert-warning" [hidden]="skjema.controls.adresse.valid || (skjema.controls.adresse.pristine && !submitted)">
+                  Adressen du har skrevet er ikke akseptert.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <textarea class="form-control" formControlName="brukersporsmal" placeholder="- Skriv spørsmålet ditt her -"></textarea>
+                <p class="alert alert-warning" [hidden]="skjema.controls.brukersporsmal.valid || (skjema.controls.brukersporsmal.pristine && !submitted)">
+                  Ditt spørsmål er foreløpig ikke akseptert. Vennligst møt oss så tar vi praten heller der!
+                </p>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-lg-12 text-center">
+              <div id="success"></div>
+              <button type="submit" *ngIf="skjemaStatus=='Registrere'" [disabled]="!skjema.valid" class="btn btn-success">Registrer</button>
+
+            </div>
+          </div><br />
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!--
+
+<button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" type="submit">Send Message</button>
+
 <div>
   <div class="col-md-6 col-md-offset-1" *ngIf="visBrukerListe">
 
