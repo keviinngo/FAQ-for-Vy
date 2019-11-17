@@ -71,11 +71,11 @@ export class BrukerComponent {
     constructor(private _http: HttpClient, private fb: FormBuilder, private _modalService: NgbModal) {
         this.skjema = fb.group({
             id: [""],
-            email: [null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])],
+            email: [null, Validators.compose([Validators.required, Validators.pattern("^[a-zA-ZøæåØÆÅ0-9]+(\.[_a-zA-ZøæåØÆÅ0-9]+)*@[a-zA-ZøæåØÆÅ0-9-]+(\.[a-zA-ZøæåØÆÅ0-9-]+)*(\.[a-z]{2,15})$")])],
             fornavn: [null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])],
             etternavn: [null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])],
-            adresse: [null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])],
-            brukersporsmal: [null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,150}")])],
+            adresse: [null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ0-9\\-. ]{2,30}")])],
+            brukersporsmal: [null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-.?! ]{2,150}")])],
         });
 
     }

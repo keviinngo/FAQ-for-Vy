@@ -25,7 +25,6 @@ namespace IndividuellAngular.Models
     {
         public int id { get; set; }
         [Required]
-        [RegularExpression("^[a-zæøåA-ZÆØÅ. \\-]{2,30}$")]
         public string email { get; set; }
         [Required]
         [RegularExpression("^[a-zøæåA-ZØÆÅ. \\-]{2,30}$")]
@@ -34,12 +33,11 @@ namespace IndividuellAngular.Models
         [Required]
         [RegularExpression("^[a-zæøåA-ZÆØÅ. \\-]{2,30}$")]
         public string etternavn { get; set; }
+
         [Required]
-        [RegularExpression("^[a-zøæåA-ZØÆÅ. \\-]{2,30}$")]
         public string adresse { get; set; }
 
         [Required]
-        [RegularExpression("^[a-zæøåA-ZÆØÅ. \\-]{2,30}$")]
         public string brukersporsmal { get; set; }
 
     }
