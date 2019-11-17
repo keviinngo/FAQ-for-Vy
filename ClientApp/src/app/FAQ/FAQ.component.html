@@ -1,20 +1,19 @@
-<h1>FAQ</h1>
+<h2 class="text-center">FAQ</h2>
+<h4 class="text-center text-muted">Her ser du mest stilte spørsmål og svar.</h4>
 
-
-
-
-<ngb-accordion [closeOthers]="true" id="static-1" width-50>
-  <ngb-panel id="static-{{question.id}}"  *ngFor="let question of alleQuestions">
+<ngb-accordion [closeOthers]="true" id="static-1">
+  <ngb-panel id="static-{{question.id}}" *ngFor="let question of alleQuestions">
     <ng-template ngbPanelHeader>
-      <div class="card title">
-         <span class="steps">
-            <button ngbPanelToggle class="btn w-100 text-center">{{question.sporsmal}}</button>
-          </span>
+      <div class="title">
+
+        <button ngbPanelToggle class="btn w-100 text-left"><b>{{question.sporsmal}}</b><img src="assets/bilde/vy-logo.png" class="vy-logo"></button>
+
       </div>
     </ng-template>
     <ng-template ngbPanelContent>
-
-      {{question.svar}}<br /><br />
+      <div class="text-left">
+        {{question.svar}}
+      </div><br />
       <span class="liker">
         {{question.ratingOpp}} <button class="btn btn-success" [disabled]="clickedLike" (click)="endreRating(question.id, question.sporsmal, question.svar, question.ratingOpp, question.ratingNed, 0); clickedLike = true;">Like</button>
       </span>
@@ -26,41 +25,3 @@
 </ngb-accordion>
 
 
-<div class="container">
-
-  <h2>Frequently Asked Questions</h2>
-
-  <div class="accordion">
-    <div class="accordion-item">
-      <a>Why is the moon sometimes out during the day?</a>
-      <div class="content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <a>Why is the sky blue?</a>
-      <div class="content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <a>Will we ever discover aliens?</a>
-      <div class="content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <a>How much does the Earth weigh?</a>
-      <div class="content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <a>How do airplanes stay up?</a>
-      <div class="content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
-      </div>
-    </div>
-  </div>
-
-</div>

@@ -7,6 +7,7 @@ import { Question, IQuestion } from "./question";
 //import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
 //import { MatTreeNestedDataSource } from '@angular/material/tree';
 //import { NestedTreeControl } from '@angular/cdk/tree';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
     selector: "app-FAQ",
@@ -38,6 +39,8 @@ export class FAQComponent {
     clickedLike = false;
     clickedDislike = false;
 
+    panelOpenState = false;
+
     //nestedDataSource: MatTreeNestedDataSource<Question>;
     //nestedTreeControl: NestedTreeControl<Question>;
 
@@ -68,6 +71,7 @@ export class FAQComponent {
         this.hentAlleQuestions();
         this.visSkjema = false;
         this.visQuestionListe = true;
+        this.panelOpenState = false;
     }
 
     hentAlleQuestions() {
