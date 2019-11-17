@@ -10,7 +10,6 @@
   float: right;
 }
 
-
 .liker {
   color: green;
 }
@@ -18,5 +17,13 @@
 .disliker {
   color: red;
 }
-/**/
+
+.bakgrunn {
+  margin-top: 25px;
+  position: center;
+  width: 100%;
+}
+
+
+
 

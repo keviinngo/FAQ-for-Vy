@@ -1,27 +1,29 @@
-<h2 class="text-center">FAQ</h2>
+<h2 class="text-center"><b>F</b>requently <b>A</b>sked <b>Q</b>uestions</h2>
 <h4 class="text-center text-muted">Her ser du mest stilte spørsmål og svar.</h4>
+<div>
+  <ngb-accordion [closeOthers]="true" id="static-1">
+    <ngb-panel id="static-{{question.id}}" *ngFor="let question of alleQuestions">
+      <ng-template ngbPanelHeader>
+        <div class="title">
 
-<ngb-accordion [closeOthers]="true" id="static-1">
-  <ngb-panel id="static-{{question.id}}" *ngFor="let question of alleQuestions">
-    <ng-template ngbPanelHeader>
-      <div class="title">
+          <button ngbPanelToggle class="btn w-100 text-left"><b>{{question.sporsmal}}</b><img src="assets/bilde/vy-logo.png" class="vy-logo"></button>
 
-        <button ngbPanelToggle class="btn w-100 text-left"><b>{{question.sporsmal}}</b><img src="assets/bilde/vy-logo.png" class="vy-logo"></button>
+        </div>
+      </ng-template>
+      <ng-template ngbPanelContent>
+        <div class="text-left">
+          {{question.svar}}
+        </div><br />
+        <span class="liker">
+          {{question.ratingOpp}} <button class="btn btn-success" [disabled]="clickedLike" (click)="endreRating(question.id, question.sporsmal, question.svar, question.ratingOpp, question.ratingNed, 0); clickedLike = true;">Like</button>
+        </span>
+        <span class="disliker">
+          {{question.ratingNed}} <button class="btn btn-danger" [disabled]="clickedDislike" (click)="endreRating(question.id, question.sporsmal, question.svar, question.ratingOpp, question.ratingNed, 1); clickedDislike = true;">Dislike</button>
+        </span>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+</div><br />
+      <h5 class="text-center text-muted">Noe annet du lurer på? Send inn gjerne ditt spørsmål <a [routerLink]="['/bruker']">her</a></h5>
 
-      </div>
-    </ng-template>
-    <ng-template ngbPanelContent>
-      <div class="text-left">
-        {{question.svar}}
-      </div><br />
-      <span class="liker">
-        {{question.ratingOpp}} <button class="btn btn-success" [disabled]="clickedLike" (click)="endreRating(question.id, question.sporsmal, question.svar, question.ratingOpp, question.ratingNed, 0); clickedLike = true;">Like</button>
-      </span>
-      <span class="disliker">
-        {{question.ratingNed}} <button class="btn btn-danger" [disabled]="clickedDislike" (click)="endreRating(question.id, question.sporsmal, question.svar, question.ratingOpp, question.ratingNed, 1); clickedDislike = true;">Dislike</button>
-      </span>
-    </ng-template>
-  </ngb-panel>
-</ngb-accordion>
-
-
+<img src="assets/bilde/vy-tog.jpg" class="bakgrunn">
