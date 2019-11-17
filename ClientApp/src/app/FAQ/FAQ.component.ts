@@ -48,18 +48,23 @@ export class FAQComponent {
             );
     };
 
-    // her blir rating hentet
-    endreRating(id: number, sporsmal: string, svar: string, ratingOpp: number, ratingNed: number, tester: number) {
+    
+    
 
-        switch (tester) {
+    // her blir rating hentet
+    endreRating(id: number, sporsmal: string, svar: string, ratingOpp: number, ratingNed: number, stemmer: number) {
+
+        switch (stemmer) {
             case 0:
                 ratingOpp++;
                 this.endreEnRating(id, sporsmal, svar, ratingOpp, ratingNed);
+                this.clickedDislike = false;
                 console.log("Like was called!");
                 break;
             case 1:
                 ratingNed--;
                 this.endreEnRating(id, sporsmal, svar, ratingOpp, ratingNed);
+                this.clickedLike = false;
                 console.log("Dislike was called!");
                 break;
         }
@@ -84,7 +89,7 @@ export class FAQComponent {
                 () => {
                     this.hentAlleQuestions();
                     
-                    console.log("ferdig post-api/FAQ");
+                    console.log("ferdig å lagre rating.");
                 },
                 error => alert(error),
             );
