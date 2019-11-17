@@ -57,12 +57,14 @@ export class FAQComponent {
         switch (stemmer) {
             case 0:
                 ratingOpp++;
+                ratingNed++;
                 this.endreEnRating(id, sporsmal, svar, ratingOpp, ratingNed);
                 this.clickedDislike = false;
                 console.log("Like was called!");
                 break;
             case 1:
                 ratingNed--;
+                ratingOpp--;
                 this.endreEnRating(id, sporsmal, svar, ratingOpp, ratingNed);
                 this.clickedLike = false;
                 console.log("Dislike was called!");

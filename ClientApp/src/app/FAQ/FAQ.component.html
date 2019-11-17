@@ -13,12 +13,12 @@
       <ng-template ngbPanelContent>
         <div class="text-left">
           {{question.svar}}
-        </div><br />
+        </div><br /><div class="text-muted">Var dette svaret nyttig?</div><br />
         <span class="liker">
           {{question.ratingOpp}} <button class="btn btn-success" [disabled]="clickedLike" (click)="endreRating(question.id, question.sporsmal, question.svar, question.ratingOpp, question.ratingNed, 0); clickedLike = true;">Like</button>
         </span>
         <span class="disliker">
-          {{question.ratingNed}} <button class="btn btn-danger" [disabled]="clickedDislike" (click)="endreRating(question.id, question.sporsmal, question.svar, question.ratingOpp, question.ratingNed, 1); clickedDislike = true;">Dislike</button>
+          {{question.ratingNed}} <button class="btn btn-danger" [disabled]="clickedDislike" (click)="endreRating(question.id, question.sporsmal, question.svar, question.ratingOpp, question.ratingNed, 1); clickedDislike = true;">Unlike</button>
         </span>
       </ng-template>
     </ngb-panel>
