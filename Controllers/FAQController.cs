@@ -20,7 +20,7 @@ namespace IndividuellAngular.Controllers
             _context = context;
         }
 
-        // GET api/FAQ/
+        // GET api/FAQ/ - Spørsmål og svar
         [HttpGet]
         public JsonResult Get()
         {
@@ -31,24 +31,7 @@ namespace IndividuellAngular.Controllers
 
         }
 
-        // POST api/FAQ/Question
-        [HttpPost]
-        [Route("Question")]
-        public JsonResult Post([FromBody]question innQuestion)
-        {
-            if (ModelState.IsValid)
-            {
-                var questionDb = new QuestionDB(_context);
-                bool OK = questionDb.lagreQuestion(innQuestion);
-                if (OK)
-                {
-                    return Json("OK");
-                }
-            }
-            return Json("Kunne ikke sette inn kunden i DB");
-        }
-
-        // PUT api/FAQ
+        // PUT api/FAQ - Legger til rating
         [HttpPut("{id}")]
         public JsonResult Put(int id, [FromBody]question innKunde)
         {

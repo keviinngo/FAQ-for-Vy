@@ -14,9 +14,7 @@ namespace IndividuellAngular
         public QuestionDB(QuestionContext context)
         {
             _context = context; 
-            settInnQuestion(_context);
-            
-            //_context.Database.EnsureCreated();         
+            settInnQuestion(_context);                               
         }                
 
         public List<question> hentAlleQuestions()
@@ -34,35 +32,13 @@ namespace IndividuellAngular
             return alleQuestions;
         }
 
-        public bool lagreQuestion(question innQuestion)
-        {
-            var nyQuestion = new Question
-            {
-                sporsmal = innQuestion.sporsmal,
-                svar = innQuestion.svar,
-                ratingOpp = innQuestion.ratingOpp,
-                ratingNed = innQuestion.ratingNed,
-            };
-
-            try
-            {
-                // lagre kunden
-                _context.Questions.Add(nyQuestion);
-                _context.SaveChanges();
-            }
-            catch (Exception feil)
-            {
-                
-                return false;
-            }
-            return true;
-        }
-
+        // Setter inn FAQ i DB
         public void settInnQuestion(QuestionContext context)
         {
-           
+
+            // Sjekker om det er tom FAQ
             List<Question> gamleQuestion = context.Questions.ToList();
-            if (gamleQuestion.Count > 0) //Her sjekker koden om det er en tom destinasjonstabell, hvis den er tom så returnerer den og skriver ut
+            if (gamleQuestion.Count > 0) 
             {
                 Console.Write("Tabellen er ikke tom");
                 return;
@@ -151,13 +127,13 @@ namespace IndividuellAngular
 
         public bool endreEnRating(int id, question innRating)
         {
-            // finn kunden
+            // finn rating
             Question idRating = _context.Questions.FirstOrDefault(k => k.id == id);
             if (idRating == null)
             {
                 return false;
             }
-            // legg inn ny verdier i denne fra innKunde
+            // legg inn ny verdier i denne fra innRating
             idRating.sporsmal = innRating.sporsmal;
             idRating.svar = innRating.svar;
             idRating.ratingOpp = innRating.ratingOpp;
@@ -165,7 +141,7 @@ namespace IndividuellAngular
 
             try
             {
-                // lagre kunden
+                // lagre rating
                 _context.SaveChanges();
             }
             catch (Exception feil)
@@ -205,7 +181,7 @@ namespace IndividuellAngular
 
             try
             {
-                // lagre kunden
+                // lagre brukeren
                 _context.Brukere.Add(nyBruker);
                 _context.SaveChanges();
             }

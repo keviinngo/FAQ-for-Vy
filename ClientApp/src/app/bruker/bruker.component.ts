@@ -1,6 +1,5 @@
 import { Component, Inject } from "@angular/core";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Bruker, IBruker } from "./bruker";
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -38,6 +37,7 @@ export class BrukerComponent {
         this.visBrukerListe = true;
     }
 
+    // Henter alle brukere som har registrert
     hentAlleBrukere() {
         this._http.get<IBruker[]>("api/FAQ/Bruker")
             .subscribe(
@@ -55,6 +55,7 @@ export class BrukerComponent {
         this.registrerBruker();
     }
 
+    
     registrerBruker() {
         // resette verdiene i skjema 
         this.skjema.setValue({
@@ -70,6 +71,7 @@ export class BrukerComponent {
         this.skjemaStatus = "Registrere";
     }
 
+    //Lagrer brukeren og spørsmålet fra registrering-form
     lagreBruker() {
         var lagretBruker = new Bruker();
 
@@ -93,6 +95,7 @@ export class BrukerComponent {
             );
     };
 
+    // Sletter brukeren 
     sletteBruker(id: number) {
         this._http.delete("api/FAQ/" + id)
             .subscribe(

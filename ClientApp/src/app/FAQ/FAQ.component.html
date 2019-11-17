@@ -5,9 +5,7 @@
     <ngb-panel id="static-{{question.id}}" *ngFor="let question of alleQuestions">
       <ng-template ngbPanelHeader>
         <div class="title">
-
           <button ngbPanelToggle class="btn w-100 text-left"><b>{{question.sporsmal}}</b><img src="assets/bilde/vy-logo.png" class="vy-logo"></button>
-
         </div>
       </ng-template>
       <ng-template ngbPanelContent>
@@ -24,6 +22,6 @@
     </ngb-panel>
   </ngb-accordion>
 </div><br />
-      <h5 class="text-center text-muted">Noe annet du lurer på? Send inn gjerne ditt spørsmål <a [routerLink]="['/bruker']">her</a></h5>
+<h5 class="text-center text-muted">Noe annet du lurer på? Send inn gjerne ditt spørsmål <a [routerLink]="['/bruker']">her</a></h5>
 
 <img src="assets/bilde/vy-tog.jpg" class="bakgrunn">

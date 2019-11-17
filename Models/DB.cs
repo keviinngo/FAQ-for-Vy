@@ -18,7 +18,6 @@ namespace IndividuellAngular.Models
         public int ratingNed { get; set; }
     }
 
-
     public class Bruker
     {
         [Key]
@@ -36,20 +35,13 @@ namespace IndividuellAngular.Models
         public QuestionContext(DbContextOptions<QuestionContext> options)
             : base(options)
         {
-            //Database.CreateIfNotExists();
+           
         }
-
-
 
         public DbSet<Question> Questions { get; set; }
 
         public DbSet<Bruker> Brukere { get; set; }
 
-        /*
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
-        */
+
     }
 }

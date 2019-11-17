@@ -3,13 +3,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Question, IQuestion } from "./question";
 
-
 @Component({
     selector: "app-FAQ",
     templateUrl: "./FAQ.component.html",
     styleUrls: ['./FAQ.component.css'],
 })
-
 
 
 export class FAQComponent {
@@ -19,7 +17,6 @@ export class FAQComponent {
     clickedLike = false;
     clickedDislike = false;
 
-    
     constructor(private _http: HttpClient, private fb: FormBuilder) {
         this.skjema = fb.group({
             id: [""],
@@ -36,6 +33,7 @@ export class FAQComponent {
         this.hentAlleQuestions();
     }
 
+    // Henter alle spørsmål og svar fra FAQ
     hentAlleQuestions() {
         this._http.get<IQuestion[]>("api/FAQ/")
             .subscribe(
@@ -46,10 +44,7 @@ export class FAQComponent {
                 },
                 error => alert(error)
             );
-    };
-
-    
-    
+    };    
 
     // her blir rating hentet
     endreRating(id: number, sporsmal: string, svar: string, ratingOpp: number, ratingNed: number, stemmer: number) {

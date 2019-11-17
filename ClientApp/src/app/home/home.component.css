@@ -43,14 +43,14 @@ header.masthead h1 {
 }
 
 @media (min-width: 768px) {
-  header.masthead {
-    padding-top: 12rem;
-    padding-bottom: 12rem;
-  }
+header.masthead {
+  padding-top: 12rem;
+  padding-bottom: 12rem;
+}
 
-    header.masthead h1 {
-      font-size: 3rem;
-    }
+header.masthead h1 {
+  font-size: 3rem;
+}
 }
 
 .showcase .showcase-text {
@@ -73,30 +73,19 @@ header.masthead h1 {
   padding-bottom: 7rem;
 }
 
-  .features-icons .features-icons-item {
-    max-width: 20rem;
-  }
-
-    .features-icons .features-icons-item .features-icons-icon {
-      height: 9rem;
-    }
-
-      .features-icons .features-icons-item .features-icons-icon i {
-        font-size: 4.5rem;
-      }
-
-    .features-icons .features-icons-item:hover .features-icons-icon i {
-      font-size: 5rem;
-    }
-
-
-
-.bg {
-  /* Half height */
-  height: 50%;
-  width: auto;
-  /* Center and scale the image nicely */
-  background-position: left;
-  background-repeat: no-repeat;
-  background-size: cover;
+.features-icons .features-icons-item {
+  max-width: 20rem;
 }
+
+.features-icons .features-icons-item .features-icons-icon {
+  height: 9rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon i {
+  font-size: 4.5rem;
+}
+
+.features-icons .features-icons-item:hover .features-icons-icon i {
+  font-size: 5rem;
+}
+
