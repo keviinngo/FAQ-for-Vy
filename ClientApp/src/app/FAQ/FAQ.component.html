@@ -13,10 +13,10 @@
           {{question.svar}}
         </div><br /><div class="text-muted">Var dette svaret nyttig?</div><br />
         <span class="liker">
-          {{question.ratingOpp}} <button class="btn btn-success" [disabled]="clickedLike" (click)="endreRating(question.id, question.sporsmal, question.svar, question.ratingOpp, question.ratingNed, 0); clickedLike = true;">Like</button>
+          {{question.ratingOpp}} <button class="btn btn-success" [disabled]="clickedLike" (click)="endreRating(question.id, question.sporsmal, question.svar, question.ratingOpp, question.ratingNed, 0); clickedLike = true;">Ja</button>
         </span>
         <span class="disliker">
-          {{question.ratingNed}} <button class="btn btn-danger" [disabled]="clickedDislike" (click)="endreRating(question.id, question.sporsmal, question.svar, question.ratingOpp, question.ratingNed, 1); clickedDislike = true;">Unlike</button>
+          {{question.ratingNed}} <button class="btn btn-danger" [disabled]="clickedDislike" (click)="endreRating(question.id, question.sporsmal, question.svar, question.ratingOpp, question.ratingNed, 1); clickedDislike = true;">Nei</button>
         </span>
       </ng-template>
     </ngb-panel>
